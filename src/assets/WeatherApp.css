@@ -5,11 +5,16 @@
 }
 html, body {
   height: 100%;
+  background-image: url('backgroundGif.gif');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .weather-app {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
+    color: #244e7a;
 }
 .search-bar {
     margin: 20px 0;
@@ -34,9 +39,15 @@ html, body {
   width: 100%; /* Full width */
   height: 75px; /* Set the height of the nav bar */
   padding: 0 20px;
-  background-color: rgb(238, 223, 223);
-  border-bottom: 1px solid #ccc; /* Optional: bottom border for separation */
+  background-color: rgb(73, 213, 238);
+  /*border-bottom: 1px solid #ccc; Optional: bottom border for separation */
   z-index: 10; /* Ensure the nav bar is above other content */
+}
+.site-name {
+    font-size: 50px;
+    font-weight: bold;
+    color: #244e7a; /* Optional: Customize color */
+}
 }
 .site-name {
     font-size: 50px;
