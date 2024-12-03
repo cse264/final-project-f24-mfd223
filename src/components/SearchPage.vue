@@ -1,9 +1,6 @@
 <template>
   <div class="weather-app">
-    <div class="top-nav">
-      <div class="site-name">WeatherWise</div>
-      <SignInButton />
-    </div>
+    <NavBar />
     <img
       alt="WeatherWise logo"
       src="../assets/logo.png"
@@ -19,7 +16,7 @@
 
 <script>
 import "../assets/WeatherApp.css";
-import SignInButton from "./SignInButton.vue";
+import NavBar from "./NavBar.vue";
 export default {
   name: "WeatherApp",
   data() {
@@ -30,7 +27,7 @@ export default {
     };
   },
   components: {
-    SignInButton,
+    NavBar,
   },
 };
 </script>
