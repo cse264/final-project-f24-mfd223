@@ -8,9 +8,10 @@
     />
     <h1>Welcome to WeatherWise!</h1>
     <div class="search-bar">
-      <input type="text" placeholder="Enter a city" />
-      <button>Search</button>
+      <input type="text" v-model="city" placeholder="Enter a city" />
+      <button @click="searchWeather">Search</button>
     </div>
+    <p v-if="error">{{error}}</p>
   </div>
 </template>
 
@@ -23,8 +24,17 @@ export default {
     return {
       city: "",
       weatherData: null,
-      error: null,
+      error: "",
     };
+  },
+  methods: {
+    searchWeather() {
+      if (this.city.trim()) {
+        this.$router.push({ name: 'weather-detail', params: { city: this.city } });
+      } else {
+        this.error = 'Please enter a city name!';
+      }
+    }
   },
   components: {
     NavBar,
