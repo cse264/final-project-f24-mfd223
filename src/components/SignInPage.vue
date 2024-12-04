@@ -32,31 +32,31 @@ export default {
   },
   methods: {
     async handleLogin() {
-  try {
-    const response = await fetch('http://localhost:8081/api/users/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: this.username,
-        password: this.password
-      })
-    });
+    try {
+        const response = await fetch('http://localhost:8081/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            username: this.username,
+            password: this.password
+            })
+        });
 
-    if (!response.ok) {
-      this.error = 'Invalid credentials.';
-      return;
-    }
+        if (!response.ok) {
+            this.error = 'Invalid credentials.';
+            return;
+        }
 
-    const userData = await response.json();
-    // Save user data to localStorage
-    localStorage.setItem('user', JSON.stringify(userData));
+        const userData = await response.json();
+        // Save user data to localStorage
+        localStorage.setItem('user', JSON.stringify(userData));
     
-    // Redirect to the profile page
-    this.$router.push('/profile');
-  } catch (err) {
-    this.error = 'An error occurred while logging in.';
-  }
-},
+        // Redirect to the profile page
+        this.$router.push('/profile');
+    } catch (err) {
+        this.error = 'An error occurred while logging in.';
+        }
+    },
     goToSignUp() {
       this.$router.push('/signup'); // Navigate to the sign-up page
     }

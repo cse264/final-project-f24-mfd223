@@ -1,4 +1,32 @@
 # Final Project
+## Team Members:
+* Michael DeFulvio - mfd223@lehigh.edu
+* Evan McDonnell - esm227@lehigh.edu
+* Siqi Zhang - siz227@lehigh.edu
+* Rico Chen - yic625@lehigh.edu
+
+## Application Description
+The application we created is called WeatherWise. It allows users to specify a city and receive detailed information about the weather in that location. Users can sign in and opt to be paid/premium users. Paid users get access to a 5-day forecast, while unpaid or unauthenticated users will only receive information for the current day.
+
+## REST API
+OpenWeatherMap API provides all the weather information for the application.
+
+## Framework Not Discussed in Class
+We used the Vue framework due to its component base architecture.
+
+## Database
+We used H2 which is an embedded database that does not need to be installed or started separately. Spring Boot directly embeds H2 as a library file into the application, which is very convenient. 
+
+## How to Run Application:
+
+* Make sure that view is installed by checking with 'vue --version'
+* If it is not installed, install it with 'npm install -g @vue/cli'
+* Start the application from the vue directory with 'npm run serve'
+* The backend is stored in a separate branch called 'Rico' (he handled the backend)
+* To start the backend, use 'mvn spring-boot:run' from the 'spring-backend' directory
+
+
+# Previously Provided Guidelines:
 
 ## Due Last day of Class
 ## First report due Monday Oct 28, 2024

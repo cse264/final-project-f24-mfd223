@@ -14,7 +14,8 @@
         <ul>
           <li>Michael DeFulvio - mfd223@lehigh.edu</li>
           <li>Evan McDonnell - esm227@lehigh.edu</li>
-          <li></li>
+          <li>Siqi Zhang - siz227@lehigh.edu</li>
+          <li>Rico Chen - yic625@lehigh.edu</li>
         </ul>
       </p>
     </div>
