@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="profile-content">
     <NavBar />
     <h2>Profile</h2>
     <div v-if="user">
@@ -7,13 +7,13 @@
       <p><strong>Status:</strong> {{ user.paidUser ? 'Paid User' : 'Free User' }}</p>
     </div>
     <p v-else>You are not signed in.</p>
-  </div>
-  <div>
     <button @click="signOut">Sign Out</button>
   </div>
 </template>
 
 <script>
+import NavBar from './NavBar.vue';
+import "../assets/ProfilePage.css";
 export default {
   data() {
     return {
@@ -25,6 +25,9 @@ export default {
     if (storedUser) {
       this.user = JSON.parse(storedUser);
     }
+  },
+  components: {
+    NavBar
   },
   methods: {
     signOut() {

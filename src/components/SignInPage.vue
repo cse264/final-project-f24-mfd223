@@ -1,10 +1,13 @@
 <template>
   <div class="sign-in-page">
+    <NavBar/>
     <h1>Sign In</h1>
     <form @submit.prevent="handleLogin">
       <input v-model="username" placeholder="Username" required />
       <input v-model="password" type="password" placeholder="Password" required />
-      <button type="submit">Sign In</button>
+      <div>
+        <button type="submit">Sign In</button>
+      </div>
     </form>
     <p>
       New User? 
@@ -15,6 +18,7 @@
 </template>
 
 <script>
+import NavBar from './NavBar.vue'
 export default {
   data() {
     return {
@@ -23,31 +27,36 @@ export default {
       error: ''
     };
   },
+  components: {
+    NavBar
+  },
   methods: {
     async handleLogin() {
-      try {
-        const response = await fetch('http://localhost:8081/api/users/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: this.username,
-            password: this.password
-          })
-        });
+  try {
+    const response = await fetch('http://localhost:8081/api/users/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: this.username,
+        password: this.password
+      })
+    });
 
-        if (!response.ok) {
-          this.error = 'Invalid credentials.';
-          return;
-        }
+    if (!response.ok) {
+      this.error = 'Invalid credentials.';
+      return;
+    }
 
-        const userData = await response.json();
-        // Store user data (e.g., in Vuex or localStorage) and redirect
-        console.log('User logged in:', userData);
-        this.$router.push('/profile');
-      } catch (err) {
-        this.error = 'An error occurred while logging in.';
-      }
-    },
+    const userData = await response.json();
+    // Save user data to localStorage
+    localStorage.setItem('user', JSON.stringify(userData));
+    
+    // Redirect to the profile page
+    this.$router.push('/profile');
+  } catch (err) {
+    this.error = 'An error occurred while logging in.';
+  }
+},
     goToSignUp() {
       this.$router.push('/signup'); // Navigate to the sign-up page
     }
@@ -57,7 +66,13 @@ export default {
 
 <style>
 .sign-in-page {
-  /* Add styles for the sign-in page */
+    margin: 80px auto;
+    max-width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .error {
   color: red;

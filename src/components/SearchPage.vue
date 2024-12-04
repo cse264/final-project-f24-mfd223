@@ -30,7 +30,11 @@ export default {
   methods: {
     searchWeather() {
       if (this.city.trim()) {
-        this.$router.push({ name: 'weather-detail', params: { city: this.city } });
+        // No need to pass the user; we'll retrieve it in the other component
+        this.$router.push({
+          name: 'weather-detail',
+          params: { city: this.city }
+        });
       } else {
         this.error = 'Please enter a city name!';
       }

@@ -1,12 +1,15 @@
 <template>
   <div class="sign-up-page">
+    <NavBar />
     <h1>Sign Up</h1>
     <form @submit.prevent="handleSignUp">
       <input v-model="username" placeholder="Username" required />
       <input v-model="password" type="password" placeholder="Password" required />
-      <label>
-        <input type="checkbox" v-model="paidUser" /> Paid User?
-      </label>
+      <div>
+        <label>
+          <input type="checkbox" v-model="paidUser" /> Paid User?
+        </label>
+      </div>
       <button type="submit">Sign Up</button>
     </form>
     <p v-if="error" class="error">{{ error }}</p>
@@ -15,6 +18,7 @@
 </template>
 
 <script>
+import NavBar from './NavBar.vue';
 export default {
   data() {
     return {
@@ -24,6 +28,9 @@ export default {
       error: '',
       success: ''
     };
+  },
+  components: {
+    NavBar,
   },
   methods: {
     async handleSignUp() {
@@ -58,7 +65,13 @@ export default {
 
 <style>
 .sign-up-page {
-  /* Add styles for the sign-up page */
+    margin: 80px auto;
+    max-width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .error {
   color: red;
