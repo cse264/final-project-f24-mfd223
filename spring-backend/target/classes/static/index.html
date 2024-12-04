@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Backend API Documentation</title>
+</head>
+<body>
+<h1>Spring Backend - API Documentation</h1>
+<p>Welcome to the backend service. The server is running successfully.</p>
+
+<h2>Available REST APIs:</h2>
+<ul>
+    <li><strong>User Registration:</strong>
+        <p>Endpoint: <code>POST /api/users/register</code></p>
+        <p>Request Body:</p>
+        <pre>{
+    "username": "testuser",
+    "password": "password123",
+    "paidUser": true
+}</pre>
+        <p>Response: <code>200 OK</code> or relevant error messages</p>
+    </li>
+    <li><strong>User Login:</strong>
+        <p>Endpoint: <code>POST /api/users/login</code></p>
+        <p>Request Body:</p>
+        <pre>{
+    "username": "testuser",
+    "password": "password123"
+}</pre>
+        <p>Response: <code>200 OK</code> with user details or relevant error messages</p>
+    </li>
+    <li><strong>Weather Information:</strong>
+        <p>Endpoint: <code>GET /api/weather</code></p>
+        <p>Query Parameters:</p>
+        <ul>
+            <li><code>city</code> (required): Name of the city</li>
+            <li><code>paidUser</code> (required): true or false</li>
+        </ul>
+        <p>Response: Weather details or relevant error messages</p>
+    </li>
+</ul>
+
+<h2>Frontend Developer Instructions:</h2>
+<p>Use the above endpoints in your frontend to send and retrieve data. For example:</p>
+<ul>
+    <li>For user registration, send a POST request to <code>/api/users/register</code> with the required JSON body.</li>
+    <li>For fetching weather data, use a GET request to <code>/api/weather</code> with the query parameters.</li>
+</ul>
+<p>Contact the backend team if you need further assistance.</p>
+</body>
+</html>
