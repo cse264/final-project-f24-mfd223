@@ -1,6 +1,16 @@
 <template>
-    <button class="sign-in-btn">Sign In</button>
+    <button class="sign-in-btn" @click="goToSignIn">Sign In</button>
 </template>
+
+<script>
+export default {
+  methods: {
+    goToSignIn() {
+      this.$router.push('/signin'); // Navigate to the sign-in page
+    }
+  }
+};
+</script>
 
 <style scoped>
 .sign-in-btn {

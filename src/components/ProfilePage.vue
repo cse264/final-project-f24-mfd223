@@ -1,28 +1,41 @@
 <template>
-  <div class="profile-page">
+  <div>
     <NavBar />
-    <div class="profile-content">
-      <h1>User Profile</h1>
-      <div class="profile-details">
-        <p><strong>Name:</strong> Temp User</p>
-        <p><strong>Hometown:</strong> Bethlehem</p>
-        <p><strong>Account Type:</strong> Free</p>
-      </div>
+    <h2>Profile</h2>
+    <div v-if="user">
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Status:</strong> {{ user.paidUser ? 'Paid User' : 'Free User' }}</p>
     </div>
+    <p v-else>You are not signed in.</p>
+  </div>
+  <div>
+    <button @click="signOut">Sign Out</button>
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import "../assets/ProfilePage.css";
-
 export default {
-  name: "ProfilePage",
-  components: {
-    NavBar,
+  data() {
+    return {
+      user: null
+    };
   },
+  created() {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.user = JSON.parse(storedUser);
+    }
+  },
+  methods: {
+    signOut() {
+      localStorage.removeItem('user');
+      this.$router.push('/'); // Redirect to home page
+    }
+  }
 };
 </script>
+
+
 
 
 

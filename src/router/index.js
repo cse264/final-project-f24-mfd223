@@ -3,6 +3,8 @@ import SearchPage from "../components/SearchPage.vue";
 import ProfilePage from "../components/ProfilePage.vue";
 import AboutPage from "../components/AboutPage.vue";
 import WeatherInfoPage from "../components/WeatherInfoPage.vue";
+import SignInPage from "../components/SignInPage";
+import SignUpPage from "../components/SignUpPage";
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/weather/:city',
     name: 'weather-detail',
     component: WeatherInfoPage
+  },
+  {
+    path: '/signin',
+    name: 'SignInPage',
+    component: SignInPage
+  },
+  {
+    path: '/signup',
+    name: 'SignUpPage',
+    component: SignUpPage
   }
 ];
 
