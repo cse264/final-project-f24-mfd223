@@ -13,6 +13,7 @@
         <strong>Creators:</strong>
         <ul>
           <li>Michael DeFulvio - mfd223@lehigh.edu</li>
+          <li>Evan McDonnell - esm227@lehigh.edu</li>
           <li></li>
         </ul>
       </p>
