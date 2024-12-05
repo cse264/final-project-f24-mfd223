@@ -49,7 +49,7 @@ export default {
         this.isPaidUser = user && user.paidUser; // Checks if the user is a paid user (if there is a user logged in)
         console.log('Is paid user:', this.isPaidUser); // Log the isPaidUser status (used for debugging)
 
-        const apiKey = '0dbe257664819cb480c15490a3d5013e';
+        const apiKey = process.env.VUE_APP_API_KEY;
         const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 
         this.error = '';
