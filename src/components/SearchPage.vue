@@ -1,3 +1,6 @@
+/* This is the search page (which is essentially the home page).
+   It has the search bar for searching for a specified city's weather. */
+
 <template>
   <div class="weather-app">
     <NavBar />
@@ -30,7 +33,7 @@ export default {
   methods: {
     searchWeather() {
       if (this.city.trim()) {
-        // No need to pass the user; we'll retrieve it in the other component
+        // Passes the city name to the weather info page
         this.$router.push({
           name: 'weather-detail',
           params: { city: this.city }

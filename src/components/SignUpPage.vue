@@ -8,7 +8,7 @@
       <div>
         <label>
           <input type="checkbox" v-model="paidUser" /> Paid User?
-        </label>
+        </label> 
       </div>
       <button type="submit">Sign Up</button>
     </form>
@@ -35,21 +35,24 @@ export default {
   methods: {
     async handleSignUp() {
       try {
+        // Registers user with backend with post method
         const response = await fetch('http://localhost:8081/api/users/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             username: this.username,
             password: this.password,
-            paidUser: this.paidUser
+            paidUser: this.paidUser // User must select the option to be paid or free user
           })
         });
 
+        // If the response from backend fails, error is set
         if (!response.ok) {
           this.error = 'Registration failed. Username might already be taken.';
           return;
         }
 
+        // Otherwise success message is set
         this.success = 'User registered successfully! You can now sign in.';
         this.username = '';
         this.password = '';
@@ -73,10 +76,10 @@ export default {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.error {
+.error { /* errors displayed red */
   color: red;
 }
-.success {
+.success { /* success message displayed in green */
   color: green;
 }
 </style>

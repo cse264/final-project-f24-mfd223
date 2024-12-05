@@ -41,13 +41,13 @@ export default {
     async getWeather() {
         const city = this.$route.params.city;
 
-        // Retrieve the user from localStorage
-        const storedUser = localStorage.getItem('user');
+        // Retrieves the user that's logged in
+        const storedUser = localStorage.getItem('user'); 
         const user = storedUser ? JSON.parse(storedUser) : null;
 
-        console.log('Parsed user:', user); // Log the parsed user object
-        this.isPaidUser = user && user.paidUser; // Check if the user is a paid user
-        console.log('Is paid user:', this.isPaidUser); // Log the isPaidUser status
+        console.log('Parsed user:', user); // Log the parsed user object (used for debugging)
+        this.isPaidUser = user && user.paidUser; // Checks if the user is a paid user (if there is a user logged in)
+        console.log('Is paid user:', this.isPaidUser); // Log the isPaidUser status (used for debugging)
 
         const apiKey = '0dbe257664819cb480c15490a3d5013e';
         const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
@@ -57,17 +57,18 @@ export default {
         this.forecast = null;
 
         try {
-            // Fetch geocoding data
+            // Fetch data from the OpenWeatherMap API
             const geoResponse = await fetch(geoUrl);
             const geoData = await geoResponse.json();
-            if (!geoData.length) {
+            if (!geoData.length) { // If nothing is found, error is set
             this.error = 'City not found!';
             return;
             }
 
+            // City is identified with latitude and longitude
             const { lat, lon } = geoData[0];
 
-            // Fetch current weather
+            // Fetches current weather from the determined latitude and longitude location
             const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
             const weatherResponse = await fetch(weatherUrl);
             const weatherData = await weatherResponse.json();
@@ -76,7 +77,7 @@ export default {
                 this.weather = weatherData;
 
                 if (this.isPaidUser) {
-                    // Fetch 5-day forecast for paid users
+                    // Fetches 5-day forecast for paid users
                     const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
                     const forecastResponse = await fetch(forecastUrl);
                     const forecastData = await forecastResponse.json();
@@ -86,7 +87,8 @@ export default {
                     .filter((item, index) => index % 8 === 0) // Get one entry per day
                     .map(item => ({
                         date: new Date(item.dt * 1000).toLocaleDateString(),
-                        temp: item.main.temp,
+                        // Sets temperature and weather description for each day in forecast
+                        temp: item.main.temp, 
                         description: item.weather[0].description
                     }));
                 }

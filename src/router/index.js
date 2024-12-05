@@ -8,32 +8,32 @@ import SignUpPage from "../components/SignUpPage";
 
 const routes = [
   {
-    path: "/",
+    path: "/", // Route for the home page (search page)
     name: "Home",
     component: SearchPage,
   },
   {
-    path: "/profile",
+    path: "/profile", // Route for the profile page
     name: "Profile",
     component: ProfilePage,
   },
   {
-    path: "/about",
+    path: "/about", // Route for the about page
     name: "About",
     component: AboutPage,
   },
   {
-    path: '/weather/:city',
+    path: '/weather/:city', // Route for the weather info page (takes the specified city as a parameter)
     name: 'weather-detail',
     component: WeatherInfoPage
   },
   {
-    path: '/signin',
+    path: '/signin', // Sign-in page route
     name: 'SignInPage',
     component: SignInPage
   },
   {
-    path: '/signup',
+    path: '/signup', // Sign-up page route
     name: 'SignUpPage',
     component: SignUpPage
   }

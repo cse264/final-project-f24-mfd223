@@ -1,3 +1,6 @@
+/* This is just the navigation bar at the top of the application at all times.
+   It has all the links to the different pages on the application. */
+
 <template>
   <nav class="top-nav">
     <div class="site-name">

@@ -1,3 +1,6 @@
+/* Profile page will list the currently logged in user and the account type.
+   If a user is not logged in, this page will indicate that. */
+
 <template>
   <div class="profile-content">
     <NavBar />
@@ -21,6 +24,7 @@ export default {
     };
   },
   created() {
+    // Uses the currently logged in user for the profile information
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
@@ -30,9 +34,10 @@ export default {
     NavBar
   },
   methods: {
+    // Signing out will remove the user from temporary storage
     signOut() {
       localStorage.removeItem('user');
-      this.$router.push('/'); // Redirect to home page
+      this.$router.push('/'); // Redirects to home page
     }
   }
 };

@@ -1,3 +1,5 @@
+/* About page which has all our names and a short description of the application */
+
 <template>
   <div>
     <NavBar />

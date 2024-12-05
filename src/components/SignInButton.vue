@@ -6,7 +6,7 @@
 export default {
   methods: {
     goToSignIn() {
-      this.$router.push('/signin'); // Navigate to the sign-in page
+      this.$router.push('/signin'); // Navigates to the sign-in page when pressed
     }
   }
 };

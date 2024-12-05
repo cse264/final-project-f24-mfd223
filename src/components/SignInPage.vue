@@ -32,38 +32,44 @@ export default {
   },
   methods: {
     async handleLogin() {
-    try {
-        const response = await fetch('http://localhost:8081/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            username: this.username,
-            password: this.password
-            })
-        });
+        try {
+            // Fetches login from backend
+            const response = await fetch('http://localhost:8081/api/users/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            // Adds logged in user using post method
+            body: JSON.stringify({
+                username: this.username,
+                password: this.password
+                })
+            });
 
-        if (!response.ok) {
-            this.error = 'Invalid credentials.';
-            return;
-        }
+            // Backend handles credentials
+            // If an response fails, login credentials are invalid
+            if (!response.ok) {
+                this.error = 'Invalid credentials.';
+                return;
+            }
 
-        const userData = await response.json();
-        // Save user data to localStorage
-        localStorage.setItem('user', JSON.stringify(userData));
+            const userData = await response.json();
+            // Save user data to localStorage so profile page reflects logged in user
+            localStorage.setItem('user', JSON.stringify(userData));
     
-        // Redirect to the profile page
-        this.$router.push('/profile');
-    } catch (err) {
-        this.error = 'An error occurred while logging in.';
+            // Redirect to the profile page after logging in
+            this.$router.push('/profile');
+        } catch (err) {
+            this.error = 'An error occurred while logging in.';
         }
     },
     goToSignUp() {
-      this.$router.push('/signup'); // Navigate to the sign-up page
+      this.$router.push('/signup'); // Navigate to the sign-up page when pressed
     }
   }
 };
 </script>
 
+
+// Additional styling elements for sign-in page (makes it so text doesn't clash with backgroun gif)
 <style>
 .sign-in-page {
     margin: 80px auto;
