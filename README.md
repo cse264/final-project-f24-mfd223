@@ -23,7 +23,7 @@ We used H2 which is an embedded database that does not need to be installed or s
 * If it is not installed, install it with 'npm install -g @vue/cli'
 * Get API key for the .env file in order to be able to fetch data from API
 * Start the application from the vue directory with 'npm run serve'
-* The backend is stored in a separate branch called 'Rico' (he handled the backend)
+* The backend for handling user authentication is stored in a separate branch called 'Rico' (he handled this)
 * To start the backend, use 'mvn spring-boot:run' from the 'spring-backend' directory
 
 
